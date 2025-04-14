@@ -9,6 +9,14 @@ a digital recipe collection to share with the next generation that won't open a 
 * Rails 8.1.0.alpha
 * DB: PostgreSQL
 
+### Setup
+
+Run local server within container terminal.
+`$ cd ruby-cucina`
+`$ bin/rails server`
+App is running at `http://localhost:3000/`
+
+
 ...wip...
 * System dependencies
 
@@ -25,3 +33,6 @@ a digital recipe collection to share with the next generation that won't open a 
 * Deployment instructions
 
 * ...
+
+...notes to self...
+* add validation later for auth, simple for now.
