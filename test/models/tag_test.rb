@@ -1,6 +1,7 @@
 require "test_helper"
 
 class TagTest < ActiveSupport::TestCase
+  # basic validation tests
   test "should not save tag without name" do
     tag = Tag.new
     assert_not tag.save, "Saved tag without name"
@@ -12,6 +13,12 @@ class TagTest < ActiveSupport::TestCase
     assert_not tag2.save, "Saved duplicate tag name"
   end
 
+  test "should save valid tag" do
+    tag = Tag.new(name: "Lunch")
+    assert tag.save, "Could not save valid tag"
+  end
+
+  # associations tests
   test "should have correct associations" do
     tag = Tag.new
     assert_respond_to tag, :recipes
