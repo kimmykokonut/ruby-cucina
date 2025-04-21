@@ -48,7 +48,7 @@ class UserTest < ActiveSupport::TestCase
     assert user.save, "Could not save valid user"
   end
 
-  test "should not save uer without password" do
+  test "should not save user without password" do
     user = User.new(
       username: "testuser",
       email: "test@example.com"
