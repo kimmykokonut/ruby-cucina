@@ -66,6 +66,9 @@ To exit: `ctrl + d`
 
 * Database creation
 
+2025.04.21 Current db associations
+![PostgreSQL Relationships](/app/assets/images/db_associations.png)
+
 * Database initialization
 
 * How to run the test suite
