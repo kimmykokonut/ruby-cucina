@@ -1,9 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  recipe: one
-  tag: one
+pasta_italian:
+  recipe: pasta
+  tag: italian
 
-two:
-  recipe: two
-  tag: two
+pasta_dinner:
+  recipe: pasta
+  tag: dinner
+
+cookies_dessert:
+  recipe: cookies
+  tag: dessert

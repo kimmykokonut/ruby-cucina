@@ -1,15 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  instructions: MyText
-  comments: MyText
+pasta:
+  title: Buttered Noodles
+  instructions: Boil water, cook pasta, add butter
+  comments: Dad's favorite
   private: false
   user: one
 
-two:
-  title: MyString
-  instructions: MyText
-  comments: MyText
+cookies:
+  title: Chocolate Chip Cookies
+  instructions: Mix ingredients, bake at 350F
+  comments: Best with milk
   private: false
   user: two

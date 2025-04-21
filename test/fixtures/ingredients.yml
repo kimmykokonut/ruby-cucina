@@ -1,7 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+flour:
+  name: All-Purpose Flour
 
-two:
-  name: MyString
+chocolate:
+  name: Chocolate Chips
+
+salt:
+  name: Salt
+
+sugar:
+  name: Sugar
