@@ -24,4 +24,24 @@ class IngredientRecipeTest < ActiveSupport::TestCase
     assert ingredient_recipe.save
     assert_equal 0.5, ingredient_recipe.amount
   end
+
+  test "can create with valid recipe and ingredient" do
+    recipe = recipes(:cookies)
+    ingredient = ingredients(:flour)
+    ingredient_recipe = IngredientRecipe.new(recipe: recipe, ingredient: ingredient)
+    assert ingredient_recipe.save
+  end
+
+  test "is destroyed when recipe is destroyed" do
+    recipe = Recipe.create!(
+      title: "New Recipe",
+      user: users(:two)
+      )
+    ingredient = ingredients(:flour)
+    IngredientRecipe.create!(recipe: recipe, ingredient: ingredient)
+
+    assert_difference("IngredientRecipe.count", -1) do
+      recipe.destroy
+    end
+  end
 end
