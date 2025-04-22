@@ -11,4 +11,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  # rails shortcut to define all CRUD routes
+  resources :recipes, :ingredients, :tags, :users
 end
