@@ -2,9 +2,10 @@
 <h1>Recipes</h1>
 
 <div id="recipes">
+    <%# TODO: show only if public, owner page later %>
     <% @recipes.each do |recipe| %>
     <div>
-        <%= recipe.title %>
+        <%= link_to recipe.title, recipe %>
         <%# <%= recipe.photo %>
         <%= recipe.comments %>
     </div>

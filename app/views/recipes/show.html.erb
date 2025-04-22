@@ -1,0 +1,32 @@
+<h1><%= @recipe.title %></h1>
+
+<div class="recipe-details">
+    <p>by: <%= @recipe.user.username %></p>
+
+<%# photo here %>
+
+<div class="ingredients-section">
+    <h3>Ingredients</h3>
+    <ul>
+        <% @recipe.ingredient_recipes.each do |ingredient_recipe| %>
+        <li>
+            <%= ingredient_recipe.amount %> <%= ingredient_recipe.unit %> <%= ingredient_recipe.ingredient.name %>
+        </li>
+        <% end %>
+    </ul>
+</div>
+    <%# instructiosn here %>
+
+<% if @recipe.comments.present? %>
+    <div>
+        <h4>Comments:</h4>
+        <p><%= @recipe.comments %></p>
+    </div>
+<% end %>
+
+<%# tags here %>
+</div>
+
+<div>
+    <%= link_to "Back", recipes_path %>
+</div>
