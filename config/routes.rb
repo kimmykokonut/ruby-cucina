@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   # rails shortcut to define all CRUD routes
   resources :recipes, :ingredients, :tags, :users
+  root "recipes#index"
 end
