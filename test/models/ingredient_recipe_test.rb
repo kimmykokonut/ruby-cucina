@@ -2,7 +2,7 @@ require "test_helper"
 
 class IngredientRecipeTest < ActiveSupport::TestCase
   # test required associations
-  test "required recipe and ingredient" do
+  test "requires recipe and ingredient" do
     ingredient_recipe = IngredientRecipe.new(amount: 2.0, unit: "cups")
     assert_not ingredient_recipe.save, "Saved without required associations"
 
