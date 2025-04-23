@@ -1,0 +1,35 @@
+<h1>New Recipe</h1>
+
+<%= form_with model: @recipe do |form| %>
+    <div>
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+    </div>
+    <div>
+        <%= form.label :instructions %>
+        <%= form.text_area :instructions, rows: 5 %>
+    </div>
+    <div>
+        <%= form.label :photo %>
+        <%= form.file_field :photo, accept: 'image/*' %>
+        <small class="form-text text-muted">Select an image file (JPG, PNG, etc.)</small>
+    </div>
+    <div>
+        <%= form.label :comments %>
+        <%= form.text_area :comments %>
+    </div>
+    <div>
+        <%= form.label :private %>
+        <%= form.check_box :private %>
+    </div>
+    <div>
+        <%# TODO Add ingredients-autofill? create new? %>
+        <%# <% form.label :ingredient %>
+        <%# TODO offer tags as checkboxes, show as chips? %>
+        <%# <% form.label :tag %>
+    </div>
+    <div>
+        <%= form.submit "Submit Recipe" %>
+        <%= link_to "Back to Recipes", recipes_path %>
+    </div>
+   <% end %>
