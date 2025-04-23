@@ -9,8 +9,26 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
-  # create
+  # new form
   def new
     @recipe = Recipe.new
   end
+
+  # create new recipe
+  def create
+    @recipe = Recipe.new(recipe_params)
+    # Remove once auth added
+    @recipe.user = User.first
+
+    if @recipe.save
+      redirect_to @recipe, notice: "Recipe sucessfully created."
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  private
+    def recipe_params
+      params.expect(recipe: [ :title ])
+    end
 end
