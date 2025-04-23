@@ -1,6 +1,8 @@
 <%# <%= debug @recipes %>
 <h1>Recipes</h1>
 
+<%= link_to "Add new recipe", new_recipe_path %>
+
 <div id="recipes">
     <%# TODO: show only if public, owner page later %>
     <% @recipes.each do |recipe| %>
