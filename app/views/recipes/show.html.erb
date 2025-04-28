@@ -1,4 +1,7 @@
 <h1><%= @recipe.title %></h1>
+<% if @recipe.private %>
+    <p>🔒 Private Recipe</p>
+<% end %>
 
 <div class="recipe-details">
     <p>by: <%= @recipe.user.username %></p>
@@ -41,7 +44,6 @@
 <% end %>
 
 <%# tags here %>
-    <p>Private? <%= @recipe.private %> </p>
 </div>
 
 <div>
