@@ -19,13 +19,41 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%#= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
+  <body class="min-h-screen bg-gray-50">
+    <nav class="bg-white border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <div class="flex items-center gap-8">
+            <%= link_to root_path, class: "flex items-center gap-2" do %>
+              <span class="text-xl font-bold text-indigo-600">Ruby Cucina</span>
+            <% end %>
+
+            <div class="flex gap-6">
+              <%= link_to "Recipes", recipes_path,
+                  class: "text-sm font-medium text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-300 py-5" %>
+              <%= link_to "Add Recipe", new_recipe_path,
+                  class: "text-sm font-medium text-gray-500 hover:text-gray-900 border-b-2 border-transparent hover:border-gray-300 py-5" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <% if notice %>
+          <div class="mb-8 rounded-md bg-green-50 p-4">
+            <p class="text-sm font-medium text-green-800"><%= notice %></p>
+          </div>
+        <% end %>
+
+        <%= yield %>
+      </div>
     </main>
   </body>
 </html>

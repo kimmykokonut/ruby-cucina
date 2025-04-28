@@ -4,7 +4,10 @@ class Recipe < ApplicationRecord
   has_many :tags, through: :recipe_tags
   has_many :ingredient_recipes, dependent: :destroy
   has_many :ingredients, through: :ingredient_recipes
-  has_one_attached :photo
+  has_one_attached :photo do |attachable|
+    attachable.variant :card, resize_to_fill: [ 250, 250 ]
+    attachable.variant :detail, resize_to_limit: [ 400, 400 ]
+  end
 
   validates :title, presence: true
   validates :prep_time_minutes, presence: true

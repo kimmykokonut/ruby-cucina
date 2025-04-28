@@ -13,7 +13,7 @@
 <%# Photo %>
 <% if @recipe.photo.attached? %>
     <div>
-        <%= image_tag @recipe.photo.variant(resize_to_limit: [400, 400]) %>
+        <%= image_tag @recipe.photo.variant(:detail) %>
     </div>
 <% end %>
 <%# Timing %>

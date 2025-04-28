@@ -1,15 +1,35 @@
 <%# <%= debug @recipes %>
-<h1>Recipes</h1>
+<div class="flex justify-between items-center mb-6">
+  <h1 class="text-2xl font-bold text-gray-900">All Public Recipes</h1>
+</div>
 
-<%= link_to "Add new recipe", new_recipe_path %>
 
-<div id="recipes">
-    <%# TODO: show only if public, owner page later %>
-    <% @recipes.each do |recipe| %>
-    <div>
-        <%= link_to recipe.title, recipe %>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+  <% @recipes.each do |recipe| %>
+    <%= link_to recipe, class: "block group" do %>
+      <div>
+        <% if recipe.photo.attached? %>
+          <%= image_tag recipe.photo.variant(:card), class: "w-full object-cover" %>
+        <% else %>
+          <img src="https://picsum.photos/250" alt="">
+        <% end %>
 
-    <%= recipe.notes %>
-    </div>
+        <div class="p-3">
+          <h2 class="text-base font-medium text-gray-900"><%= recipe.title %></h2>
+
+          <% if recipe.description.present? %>
+            <p class="mt-1 text-sm text-gray-500 line-clamp-2"><%= recipe.description %></p>
+          <% end %>
+
+          <div class="mt-3 flex flex-wrap gap-2">
+            <% recipe.tags.each do |tag| %>
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition-colors duration-200">
+                <%= tag.name %>
+                </span>
+            <% end %>
+        </div>
+        </div>
+      </div>
     <% end %>
+  <% end %>
 </div>
