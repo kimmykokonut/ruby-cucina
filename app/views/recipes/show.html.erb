@@ -9,8 +9,11 @@
         </div>
     <% end %>
 
+    <p>Total Time: <%= @recipe.total_time_minutes %> minutes</p>
+
 <div class="ingredients-section">
     <h3>Ingredients</h3>
+    <p>test ingredient</p>
     <ul>
         <% @recipe.ingredient_recipes.each do |ingredient_recipe| %>
         <li>
