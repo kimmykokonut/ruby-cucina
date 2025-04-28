@@ -5,6 +5,12 @@
         <%= form.label :title %>
         <%= form.text_field :title, required: true %>
     </div>
+    <div>
+        <% form.label :prep_time_minutes, "Prep Time (minutes)" %>
+        <% form.range_field :prep_time_minutes, in: 1..60 %>
+        <% form.label :cook_time_minute, "Cooking Time (minutes)" %>
+        <% form.range_field :cook_time_minutes, in: 1..240 %>
+    </div>
     <%# TODO: ingredients as autofill via db. TODO create new if not exist %>
     <div>
         <% form.text_field :ingredient %>
