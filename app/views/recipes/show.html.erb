@@ -19,16 +19,16 @@
         <% end %>
     </ul>
 </div>
-<%# TODO make them numbered %>
+<%# Dynamic add instructions as steps, saved as array of strings. %>
 <div>
     <h3>Instructions</h3>
     <%= @recipe.instructions %>
 </div>
 
-<% if @recipe.comments.present? %>
+<% if @recipe.notes.present? %>
     <div>
-        <h4>Comments:</h4>
-        <p><%= @recipe.comments %></p>
+        <h4>Notes:</h4>
+        <p><%= @recipe.notes %></p>
     </div>
 <% end %>
 

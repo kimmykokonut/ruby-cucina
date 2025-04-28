@@ -1,35 +1,70 @@
-<h1>New Recipe</h1>
+<h1>Add New Recipe</h1>
 
 <%= form_with model: @recipe do |form| %>
     <div>
         <%= form.label :title %>
-        <%= form.text_field :title %>
+        <%= form.text_field :title, required: true %>
     </div>
+    <%# TODO: ingredients as autofill via db. TODO create new if not exist %>
+    <div>
+        <% form.text_field :ingredient %>
+        <% form.label :ingredient %>
+    </div>
+    <%# Instructions added as steps, saved as array of strings %>
     <div>
         <%= form.label :instructions %>
-        <%= form.text_area :instructions, rows: 5 %>
+        <div id="steps-container">
+            <div class="step">
+                <label for="Step 1">Step 1:
+                    <input type="text" class="step-input" required/>
+                </label>
+            </div>
+        </div>
+        <button type="button" onclick="addStep()">Add Next Step</button>
+        <%# hidden field to store all steps %>
+        <%= form.hidden_field :instructions %>
     </div>
+    <%# Add Photo, optional. TODO: Backup image %>
     <div>
         <%= form.label :photo %>
         <%= form.file_field :photo, accept: 'image/*' %>
         <small class="form-text text-muted">Select an image file (JPG, PNG, etc.)</small>
     </div>
+    <%# Add recipe notes, optional %>
     <div>
-        <%= form.label :comments %>
-        <%= form.text_area :comments %>
+        <%= form.label :notes %>
+        <%= form.text_area :notes %>
     </div>
+    <%# Visibility, required %>
     <div>
         <%= form.label :private %>
-        <%= form.check_box :private %>
+        <%= form.check_box :private, required: true %>
     </div>
     <div>
-        <%# TODO Add ingredients-autofill? create new? %>
-        <%# <% form.label :ingredient %>
-        <%# TODO offer tags as checkboxes, show as chips? %>
-        <%# <% form.label :tag %>
+        <%# TODO Iterate through tags to display as checkboxes %>
+        <% form.label :tag %>
+        <% form.check_box :tag %>
+
     </div>
     <div>
         <%= form.submit "Submit Recipe" %>
         <%= link_to "Back to Recipes", recipes_path %>
     </div>
    <% end %>
+
+   <script>
+    let stepCount = 1;
+
+    function addStep() {
+        stepCount++;
+        const container = document.getElementById('steps-container');
+        const newStep = document.createElement('div');
+        newStep.classList.add('step')
+        newStep.innerHTML = `
+        <label>Step ${stepCount}:</label>
+         <input type="text" class="step-input form-control" />
+    `;
+    container.appendChild(newStep);
+    }
+
+</script>
