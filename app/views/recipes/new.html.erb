@@ -41,15 +41,17 @@
     <div>
         <%= form.label :instructions %>
         <div id="steps-container">
+            <%# at least 1 empty step %>
+            <% @recipe.instructions ||= [""] %>
+            <% @recipe.instructions.each_with_index do |step, index| %>
             <div class="step">
-                <label for="Step 1">Step 1:
-                    <input type="text" class="step-input" required/>
-                </label>
+                <%= text_field_tag "recipe[instructions][]", step,
+                    placeholder: "Step #{index + 1}",
+                    required: true %>
             </div>
+            <% end %>
         </div>
-        <button type="button" onclick="addStep()">Add Next Step</button>
-        <%# hidden field to store all steps %>
-        <%= form.hidden_field :instructions %>
+        <%= button_tag "Add Step", type: "button", onclick: "addStep()" %>
     </div>
     <%# Add Photo, optional. TODO: Backup image %>
     <div>
@@ -80,18 +82,20 @@
    <% end %>
 
    <script>
-    let stepCount = 1;
-
     function addStep() {
-        stepCount++;
         const container = document.getElementById('steps-container');
+        const stepCount = container.children.length + 1;
         const newStep = document.createElement('div');
         newStep.classList.add('step')
         newStep.innerHTML = `
-        <label>Step ${stepCount}:</label>
-         <input type="text" class="step-input form-control" />
-    `;
-    container.appendChild(newStep);
+            <input type="text"
+                name="recipe[instructions][]"
+                placeholder="Step ${stepCount}"
+                required="required"
+                class="step-input" />`;
+        container.appendChild(newStep);
     }
+
+    // update hidden field before form submission
 
 </script>

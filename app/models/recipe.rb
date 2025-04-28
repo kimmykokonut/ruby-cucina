@@ -7,11 +7,11 @@ class Recipe < ApplicationRecord
   has_one_attached :photo
 
   validates :title, presence: true
-  validates :instructions, presence: true
   validates :prep_time_minutes, presence: true
   validates :cook_time_minutes, presence: true
 
-  attribute :private, :boolean, default: false
+  # convert instructions array to/from JSON
+  serialize :instructions, coder: JSON
 
   # Helper methods for time calculations
   def total_time_minutes

@@ -24,10 +24,13 @@
         <% end %>
     </ul>
 </div>
-<%# Dynamic add instructions as steps, saved as array of strings. %>
 <div>
     <h3>Instructions</h3>
-    <%= @recipe.instructions %>
+    <ol>
+        <% @recipe.instructions.each do |step| %>
+            <li><%= step %></li>
+        <% end %>
+    </ol>
 </div>
 
 <% if @recipe.notes.present? %>
@@ -38,6 +41,7 @@
 <% end %>
 
 <%# tags here %>
+    <p>Private? <%= @recipe.private %> </p>
 </div>
 
 <div>
