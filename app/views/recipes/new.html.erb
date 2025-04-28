@@ -37,6 +37,12 @@
         <%= form.label :ingredient, "(not yet)Select ingredients and quantity" %>
         <%= form.check_box :ingredient %>
     </div>
+    <%# Add Photo, optional. TODO: Backup image %>
+    <div>
+        <%= form.label :photo %>
+        <%= form.file_field :photo, accept: 'image/*' %>
+        <small class="form-text text-muted">Select an image file (JPG, PNG, etc.)</small>
+    </div>
     <%# Instructions added as steps, saved as array of strings %>
     <div>
         <%= form.label :instructions %>
@@ -46,18 +52,12 @@
             <% @recipe.instructions.each_with_index do |step, index| %>
             <div class="step">
                 <%= text_field_tag "recipe[instructions][]", step,
-                    placeholder: "Step #{index + 1}",
-                    required: true %>
+                    placeholder: "Step #{index + 1}"
+                %>
             </div>
             <% end %>
         </div>
         <%= button_tag "Add Step", type: "button", onclick: "addStep()" %>
-    </div>
-    <%# Add Photo, optional. TODO: Backup image %>
-    <div>
-        <%= form.label :photo %>
-        <%= form.file_field :photo, accept: 'image/*' %>
-        <small class="form-text text-muted">Select an image file (JPG, PNG, etc.)</small>
     </div>
     <%# Add recipe notes, optional %>
     <div>
@@ -69,10 +69,15 @@
         <%= form.label :private %>
         <%= form.check_box :private %>
     </div>
+    <%# Add tags %>
     <div>
-        <%# TODO Iterate through tags to display as checkboxes %>
-        <% form.label :tag %>
-        <% form.check_box :tag %>
+        <p>Select at least 1 tag</p>
+        <%= form.collection_check_boxes :tag_ids, Tag.order(:name), :id, :name do |b| %>
+            <div>
+                <%= b.check_box %>
+                <%= b.label %>
+            </div>
+        <% end %>
 
     </div>
     <div>
