@@ -6,6 +6,11 @@
         <%= form.text_field :title, required: true %>
     </div>
     <div>
+        <%= form.label :description %>
+        <%= form.text_area :description %>
+    </div>
+    <%# Time duration %>
+    <div>
         <%= form.label :prep_time_minutes, "Preparation Time" %>
         <%= form.select :prep_time_minutes,
         {
@@ -16,7 +21,7 @@
         },
         { prompt: "How long?" },
         { required: true } %>
-        <%= form.label :cook_time_minute, "Cooking Time" %>
+        <%= form.label :cook_time_minutes, "Cooking Time" %>
         <%= form.select :cook_time_minutes,
         {
             "Under 30 minutes" => 30,
@@ -29,7 +34,7 @@
     </div>
     <%# TODO: ingredients as autofill via db. TODO create new if not exist %>
     <div>
-        <%= form.label :ingredient, "Select ingredients and quantity" %>
+        <%= form.label :ingredient, "(not yet)Select ingredients and quantity" %>
         <%= form.check_box :ingredient %>
     </div>
     <%# Instructions added as steps, saved as array of strings %>
@@ -60,7 +65,7 @@
     <%# Visibility, required %>
     <div>
         <%= form.label :private %>
-        <%= form.check_box :private, required: true %>
+        <%= form.check_box :private %>
     </div>
     <div>
         <%# TODO Iterate through tags to display as checkboxes %>

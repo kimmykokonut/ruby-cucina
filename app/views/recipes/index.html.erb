@@ -8,8 +8,8 @@
     <% @recipes.each do |recipe| %>
     <div>
         <%= link_to recipe.title, recipe %>
-        <%# <%= recipe.photo %>
-        <%= recipe.notes %>
+
+    <%= recipe.notes %>
     </div>
     <% end %>
 </div>

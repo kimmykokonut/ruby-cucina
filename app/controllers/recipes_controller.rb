@@ -29,6 +29,7 @@ class RecipesController < ApplicationController
 
   private
     def recipe_params
-      params.expect(recipe: [ :title, :instructions, :photo, :notes, :private ])
+      # add ingredients later
+      params.expect(recipe: [ :title, :description, :prep_time_minutes, :cook_time_minutes, :instructions, :photo, :notes, :private, :tag ])
     end
 end
