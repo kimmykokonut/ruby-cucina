@@ -1,10 +1,10 @@
-<div>
+<div class="max-w-2xl mx-auto p-6">
     <h1 class="text-3xl font-bold mb-6">Add New Recipe</h1>
 
     <%= form_with model: @recipe, class: "space-y-6" do |form| %>
-        <div>
+        <div class="space-y-2">
             <%= form.label :title %>
-            <%= form.text_field :title, required: true %>
+            <%= form.text_field :title, required: true, class: "border rounded p-2 w-full" %>
         </div>
         <div class="space-y-2">
             <%= form.label :description %>
