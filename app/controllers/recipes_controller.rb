@@ -30,6 +30,6 @@ class RecipesController < ApplicationController
   private
     def recipe_params
       # add ingredients later and tags
-      params.expect(recipe: [ :title, :description, :prep_time_minutes, :cook_time_minutes, :photo, :notes, :private,  instructions: [], tag_ids: [] ])
+      params.expect(recipe: [ :title, :description, :prep_time_minutes, :cook_time_minutes, :yield_amount, :yield_unit, :photo, :notes, :private,  instructions: [], tag_ids: [] ])
     end
 end

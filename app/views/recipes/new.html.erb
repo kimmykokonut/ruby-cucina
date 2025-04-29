@@ -33,6 +33,18 @@
             { prompt: "How long?" },
             { required: true } %>
         </div>
+        <%# Yield TODO: make scalable %>
+        <div>
+            <%= form.label :yield_amount, "How many servings?"%>
+            <%= form.number_field :yield_amount,
+                step: 0.25,
+                min: 0,
+                required: true,
+                placeholder: "Amount" %>
+            <%= form.text_field :yield_unit,
+                required: true,
+                placeholder: "servings/cups/etc" %>
+        </div>
         <%# TODO: ingredients as autofill via db. TODO create new if not exist %>
         <div>
             <%= form.label :ingredient, "(not yet)Select ingredients and quantity" %>

@@ -12,6 +12,8 @@ class Recipe < ApplicationRecord
   validates :title, presence: true
   validates :prep_time_minutes, presence: true
   validates :cook_time_minutes, presence: true
+  validates :yield_amount, presence: true
+  validates :yield_unit, presence: true
 
   # convert instructions array to/from JSON
   serialize :instructions, coder: JSON
