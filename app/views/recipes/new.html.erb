@@ -45,20 +45,22 @@
             <small class="form-text text-muted">Select an image file (JPG, PNG, etc.)</small>
         </div>
         <%# Instructions added as steps, saved as array of strings %>
-        <div>
+        <div data-controller="steps">
             <%= form.label :instructions %>
-            <div id="steps-container">
-                <%# at least 1 empty step %>
-                <% @recipe.instructions ||= [""] %>
-                <% @recipe.instructions.each_with_index do |step, index| %>
-                <div class="step">
+            <div data-steps-target="container">
+                <% (@recipe.instructions ||= [""]).each_with_index do |step, index| %>
+                <div class="step-field">
                     <%= text_field_tag "recipe[instructions][]", step,
-                        placeholder: "Step #{index + 1}"
-                    %>
+                        placeholder: "Step #{index + 1}",
+                        class: "form-control mb-2" %>
                 </div>
                 <% end %>
             </div>
-            <%= button_tag "Add Step", type: "button", onclick: "addStep()" %>
+            <button type="button"
+                data-action="click->steps#add"
+                    class="bg-indigo-500 text-white px-4 py-2 rounded cursor-pointer hover:bg-indigo-600">
+              Add Step
+            </button>
         </div>
         <%# Add recipe notes, optional %>
         <div>
@@ -87,22 +89,3 @@
         </div>
     <% end %>
 </div>
-
-<script>
-    function addStep() {
-        const container = document.getElementById('steps-container');
-        const stepCount = container.children.length + 1;
-        const newStep = document.createElement('div');
-        newStep.classList.add('step')
-        newStep.innerHTML = `
-            <input type="text"
-                name="recipe[instructions][]"
-                placeholder="Step ${stepCount}"
-                required="required"
-                class="step-input" />`;
-        container.appendChild(newStep);
-    }
-
-    // update hidden field before form submission
-
-</script>
