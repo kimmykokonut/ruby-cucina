@@ -3,13 +3,13 @@
 pasta:
   title: Buttered Noodles
   instructions: Boil water, cook pasta, add butter
-  comments: Dad's favorite
+  notes: Dad's favorite
   private: false
   user: one
 
 cookies:
   title: Chocolate Chip Cookies
   instructions: Mix ingredients, bake at 350F
-  comments: Best with milk
+  notes: Best with milk
   private: false
   user: two
