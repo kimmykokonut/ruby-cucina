@@ -4,7 +4,7 @@
 </div>
 
 
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
   <% @recipes.each do |recipe| %>
     <%= link_to recipe, class: "block group" do %>
       <div>
@@ -21,9 +21,9 @@
             <p class="mt-1 text-sm text-gray-500 line-clamp-2"><%= recipe.description %></p>
           <% end %>
 
-          <div class="mt-3 flex flex-wrap gap-2">
+          <div class="mt-3 flex flex-wrap gap-1">
             <% recipe.tags.each do |tag| %>
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-50 text-indigo-700 hover:bg-indigo-100 transition-colors duration-200">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-rose-50 text-rose-700 hover:bg-rose-100 transition-colors duration-200">
                 <%= tag.name %>
                 </span>
             <% end %>

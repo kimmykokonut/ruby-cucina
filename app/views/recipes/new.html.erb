@@ -1,14 +1,14 @@
 <div class="w-full max-w-md mx-auto px-4 py-4">
-    <h1 class="text-3xl font-semibold mb-4">Add New Recipe</h1>
+    <h1 class="text-3xl font-semibold mb-3">Add New Recipe</h1>
 
     <%= form_with model: @recipe, class: "bg-white rounded px-8 pt-6 pb-8 mb-4" do |form| %>
         <div class="space-y-2">
             <%= form.label :title %>
-            <%= form.text_field :title, required: true, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-indigo-500" %>
+            <%= form.text_field :title, required: true, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white focus:border-emerald-500" %>
         </div>
         <div class="space-y-2">
             <%= form.label :description %>
-            <%= form.text_area :description, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-500"  %>
+            <%= form.text_area :description, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white focus:border-emerald-500"  %>
         </div>
         <%# Time duration %>
         <div class="flex flex-wrap -mx-3 mb-2">
@@ -23,7 +23,7 @@
                         "2+ hours" => 180
                     },
                     { prompt: "How long?" },
-                    { class: "block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-indigo-500", required: true } %>
+                    { class: "block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-emerald-500", required: true } %>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                     </div>
@@ -40,7 +40,7 @@
                         "2+ hours" => 180
                     },
                     { prompt: "How long?" },
-                    { class: "block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-indigo-500", required: true } %>
+                    { class: "block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-emerald-500", required: true } %>
                     <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                         <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
                     </div>
@@ -56,24 +56,24 @@
                     min: 0,
                     required: true,
                     placeholder: "Amount",
-                    class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-500" %>
+                    class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-emerald-500" %>
             </div>
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <%= form.text_field :yield_unit,
                     required: true,
                     placeholder: "servings/cups/etc",
-                    class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-500" %>
+                    class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-emerald-500" %>
             </div>
         </div>
         <%# TODO: ingredients as autofill via db. TODO create new if not exist %>
         <div class="space-y-2">
-            <%= form.label :ingredient, "(not yet)Select ingredients and quantity" %>
-            <%= form.check_box :ingredient %>
+            <%= form.label :ingredient, "Add Ingredients" %>
+            <%= form.text_field :ingredient, required: true, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white focus:border-emerald-500" %>
         </div>
         <%# Add Photo, optional. TODO: Backup image %>
-        <div class="space-y-2">
+        <div class="space-y-2 mb-2">
             <%= form.label :photo %>
-            <%= form.file_field :photo, accept: 'image/*', class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-0 focus:outline-none focus:bg-white focus:border-indigo-500" %>
+            <%= form.file_field :photo, accept: 'image/*', class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-0 focus:outline-none focus:bg-white focus:border-emerald-500" %>
             <small class="form-text text-muted">Select an image file (JPG, PNG, etc.)</small>
         </div>
         <%# Instructions added as steps, saved as array of strings using Stimulus controller %>
@@ -84,39 +84,39 @@
                 <div class="step-field">
                     <%= text_field_tag "recipe[instructions][]", step,
                         placeholder: "Step #{index + 1}",
-                        class: "form-control mb-2 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-500" %>
+                        class: "form-control mb-2 appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-emerald-500" %>
                 </div>
                 <% end %>
             </div>
             <button type="button"
                 data-action="click->steps#add"
-                    class="bg-transparent hover:bg-indigo-500 text-indigo-700 font-semibold hover:text-white py-1 px-2 border border-indigo-500 hover:border-transparent rounded">
-              Add Step
+                    class="bg-transparent hover:bg-emerald-500 text-emerald-700 font-semibold hover:text-white py-1 px-2 mb-2 border border-emerald-500 hover:border-transparent rounded">
+              Add Another Step
             </button>
         </div>
         <%# Add recipe notes, optional %>
         <div class="space-y-2">
             <%= form.label :notes %>
-            <%= form.text_area :notes, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-indigo-500" %>
+            <%= form.text_area :notes, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white focus:border-emerald-500" %>
         </div>
         <%# Add tags %>
         <div class="space-y-2 border border-gray-200 rounded py-3 px-4 my-3">
             <div class="flex flex-wrap gap-4">
                  <%= form.collection_check_boxes :tag_ids, Tag.order(:name), :id, :name do |b| %>
-                    <div>
-                        <%= b.check_box %>
+                    <div class="flex items-center">
+                        <%= b.check_box(class: "h-4 w-4 text-emerald-600 focus:ring-emerald-500 border-gray-300 rounded mr-1") %>
                         <%= b.label %>
                     </div>
                 <% end %>
             </div>
         </div>
         <%# Visibility, required %>
-        <div class="pb-3">
-            <%= form.check_box :private %>
+        <div class="pb-3 flex items-center">
+            <%= form.check_box :private, class: "h-4 w-4 text-emerald-600 focus:ring-emerald-500 border-gray-300 rounded mr-1" %>
             <%= form.label :private, "Private" %>
         </div>
         <div>
-            <%= form.submit "Submit Recipe", class: "bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded content-stretch w-full" %>
+            <%= form.submit "Submit Recipe", class: "bg-emerald-500 hover:bg-emerald-700 text-white font-semibold py-2 px-4 rounded content-stretch w-full" %>
         </div>
     <% end %>
 </div>
