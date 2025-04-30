@@ -44,12 +44,20 @@ Timer function built into recipes
 * Ruby version: `3.4.2`
 * Rails 8.1.0.alpha
 * DB: PostgreSQL
+* Style: TailwindCSS
 
 ### Setup
+
+Clone project from GH
+
+Install dependencies
+`$ bundle install`
 
 Run local server within container terminal.
 `$ cd ruby-cucina`
 `$ bin/rails server`
+Dev: live rebuild with Tailwind
+`$ bin/rails tailwindcss:watch`
 App is running at `http://localhost:3000/`
 
 DB migration

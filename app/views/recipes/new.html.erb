@@ -1,49 +1,68 @@
-<div class="max-w-2xl mx-auto p-6">
-    <h1 class="text-3xl font-bold mb-6">Add New Recipe</h1>
+<div class="w-full max-w-md mx-auto px-4 py-4">
+    <h1 class="text-3xl font-semibold mb-4">Add New Recipe</h1>
 
-    <%= form_with model: @recipe, class: "space-y-6" do |form| %>
+    <%= form_with model: @recipe, class: "bg-white rounded px-8 pt-6 pb-8 mb-4" do |form| %>
         <div class="space-y-2">
             <%= form.label :title %>
-            <%= form.text_field :title, required: true, class: "border rounded p-2 w-full" %>
+            <%= form.text_field :title, required: true, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-2 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-indigo-500" %>
         </div>
         <div class="space-y-2">
             <%= form.label :description %>
-            <%= form.text_area :description %>
+            <%= form.text_area :description, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-2 leading-tight focus:outline-none focus:bg-white focus:border-indigo-500"  %>
         </div>
         <%# Time duration %>
-        <div>
-            <%= form.label :prep_time_minutes, "Preparation Time" %>
-            <%= form.select :prep_time_minutes,
-            {
-                "Under 30 minutes" => 30,
-                "Under 1 hour" => 60,
-                "1-2 hours" => 120,
-                "2+ hours" => 180
-            },
-            { prompt: "How long?" },
-            { required: true } %>
-            <%= form.label :cook_time_minutes, "Cooking Time" %>
-            <%= form.select :cook_time_minutes,
-            {
-                "Under 30 minutes" => 30,
-                "Under 1 hour" => 60,
-                "1-2 hours" => 120,
-                "2+ hours" => 180
-            },
-            { prompt: "How long?" },
-            { required: true } %>
-        </div>
+        <div class="flex flex-wrap -mx-3 mb-2">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <%= form.label :prep_time_minutes, "Preparation Time" %>
+                <div class="relative">
+                    <%= form.select :prep_time_minutes,
+                    {
+                        "Under 30 minutes" => 30,
+                        "Under 1 hour" => 60,
+                        "1-2 hours" => 120,
+                        "2+ hours" => 180
+                    },
+                    { prompt: "How much time?" },
+                    { class: "block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-indigo-500", required: true } %>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <%= form.label :cook_time_minutes, "Cooking Time" %>
+                <div class="relative">
+                    <%= form.select :cook_time_minutes,
+                    {
+                        "Under 30 minutes" => 30,
+                        "Under 1 hour" => 60,
+                        "1-2 hours" => 120,
+                        "2+ hours" => 180
+                    },
+                    { prompt: "How long?" },
+                    { class: "block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-indigo-500", required: true } %>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+                </div>
+                </div>
+            </div>
         <%# Yield TODO: make scalable %>
-        <div>
             <%= form.label :yield_amount, "How many servings?"%>
-            <%= form.number_field :yield_amount,
-                step: 0.25,
-                min: 0,
-                required: true,
-                placeholder: "Amount" %>
-            <%= form.text_field :yield_unit,
-                required: true,
-                placeholder: "servings/cups/etc" %>
+        <div class="flex flex-wrap -mx-3 mb-2">
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <%= form.number_field :yield_amount,
+                    step: 0.25,
+                    min: 0,
+                    required: true,
+                    placeholder: "Amount",
+                    class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-2 leading-tight focus:outline-none focus:bg-white focus:border-indigo-500" %>
+            </div>
+            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <%= form.text_field :yield_unit,
+                    required: true,
+                    placeholder: "servings/cups/etc",
+                    class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-2 px-2 leading-tight focus:outline-none focus:bg-white focus:border-indigo-500" %>
+            </div>
         </div>
         <%# TODO: ingredients as autofill via db. TODO create new if not exist %>
         <div>
@@ -70,7 +89,7 @@
             </div>
             <button type="button"
                 data-action="click->steps#add"
-                    class="bg-indigo-500 text-white px-4 py-2 rounded cursor-pointer hover:bg-indigo-600">
+                    class="bg-transparent hover:bg-indigo-500 text-indigo-700 font-semibold hover:text-white py-1 px-2 border border-indigo-500 hover:border-transparent rounded">
               Add Step
             </button>
         </div>
@@ -96,8 +115,7 @@
 
         </div>
         <div>
-            <%= form.submit "Submit Recipe" %>
-            <%= link_to "Back to Recipes", recipes_path %>
+            <%= form.submit "Submit Recipe", class: "bg-indigo-500 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded" %>
         </div>
     <% end %>
 </div>
