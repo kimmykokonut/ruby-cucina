@@ -6,6 +6,10 @@ pasta:
   notes: Dad's favorite
   private: false
   user: one
+  prep_time_minutes: 5
+  cook_time_minutes: 10
+  yield_amount: 4
+  yield_unit: servings
 
 cookies:
   title: Chocolate Chip Cookies
@@ -13,3 +17,7 @@ cookies:
   notes: Best with milk
   private: false
   user: two
+  prep_time_minutes: 15
+  cook_time_minutes: 12
+  yield_amount: 24
+  yield_unit: cookies

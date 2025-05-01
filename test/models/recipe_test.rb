@@ -31,7 +31,11 @@ class RecipeTest < ActiveSupport::TestCase
     recipe = Recipe.new(
       title: "Valid recipe",
       instructions: "Test instructions",
-      user: users(:one)
+      user: users(:one),
+      prep_time_minutes: 10,
+      cook_time_minutes: 20,
+      yield_amount: 4,
+      yield_unit: "servings"
     )
     assert recipe.save, "Could not save valid recipe"
   end

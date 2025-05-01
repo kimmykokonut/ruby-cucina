@@ -28,7 +28,11 @@ class RecipeTagTest < ActiveSupport::TestCase
   test "is destroyed when recipe is destroyed" do
     recipe = Recipe.create!(
       title: "New Recipe",
-      user: users(:one)
+      user: users(:one),
+      prep_time_minutes: 10,
+      cook_time_minutes: 20,
+      yield_amount: 4,
+      yield_unit: "servings"
       )
     tag = tags(:dessert)
     RecipeTag.create!(recipe: recipe, tag: tag)

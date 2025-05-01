@@ -35,7 +35,11 @@ class IngredientRecipeTest < ActiveSupport::TestCase
   test "is destroyed when recipe is destroyed" do
     recipe = Recipe.create!(
       title: "New Recipe",
-      user: users(:two)
+      user: users(:two),
+      prep_time_minutes: 10,
+      cook_time_minutes: 20,
+      yield_amount: 4,
+      yield_unit: "servings"
       )
     ingredient = ingredients(:flour)
     IngredientRecipe.create!(recipe: recipe, ingredient: ingredient)

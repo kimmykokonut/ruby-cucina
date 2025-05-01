@@ -64,7 +64,13 @@ class UserTest < ActiveSupport::TestCase
 
   test "can have recipes" do
     user = users(:one)
-    recipe = Recipe.create!(title: "Test", user: user)
+    recipe = Recipe.create!(
+      title: "Test",
+      user: user,
+      prep_time_minutes: 10,
+      cook_time_minutes: 20,
+      yield_amount: 4,
+      yield_unit: "servings")
     assert_includes user.recipes, recipe
   end
 end
