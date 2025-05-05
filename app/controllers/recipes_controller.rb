@@ -12,6 +12,7 @@ class RecipesController < ApplicationController
   # new form
   def new
     @recipe = Recipe.new
+    @results = []
   end
 
   # create new recipe

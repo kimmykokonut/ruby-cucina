@@ -1,10 +1,21 @@
 <%# <%= debug @ingredients %>
 <div id="ingredients">
-  <h1 class="font-bold text-4xl">Ingredients#index</h1>
-  <% @ingredients.each do |ingredient| %>
-  <div>
-    <%= ingredient.name %>
-  </div>
+  <h1 class="font-bold text-4xl">Ingredients Search</h1>
+    <%= form_with url: search_ingredients_path, method: :get, data: { turbo_frame: "ingredients-list" } do |f| %>
+      <%= f.text_field :q,
+        placeholder: "Search ingredients...",
+        class: "w-full p-2 border rounded mb-4",
+        oninput: "this.form.requestSubmit()"
+      %>
+    <% end %>
+
+    <%= turbo_frame_tag "ingredients-list" do %>
+    <div class="bg-white shadow rounded">
+      <% @ingredients.each do |ingredient| %>
+        <div class="p-4 border-b last:border-b-0">
+          <%= ingredient.name %>
+        </div>
+      <% end %>
+    </div>
   <% end %>
-  <p>TODO: Add, edit, delete ingredients</p>
 </div>
