@@ -1,9 +1,15 @@
-<div class="bg-white shadow rounded">
-  <% ingredients.each do |ingredient| %>
-    <%= link_to ingredient_path(ingredient),
-        class: "block p-4 border-b last:border-b-0 hover:bg-gray-50",
-        data: { turbo_frame: "selected-ingredient" } do %>
-      <%= ingredient.name %>
+<% if ingredients.present? %>
+  <div class="bg-white shadow rounded">
+    <% ingredients.each do |ingredient| %>
+      <%= link_to ingredient_path(ingredient),
+        class: "block p-4 border-b last:border-b-0 hover:bg-gray-50 cursor-pointer",
+        data: { turbo_frame: "selected-ingredient", turbo_preview: false,
+          ingredient_id: ingredient.id,
+          ingredient_name: ingredient.name } do %>
+        <%= ingredient.name %>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% elsif params[:q].present? %>
+  <p class="text-gray-600">Sorry, no ingredients match <strong><%= params[:q] %></strong>. Would you like to add the ingredient to the database?</p>
+<% end %>

@@ -1,35 +1,25 @@
 <%# <%= debug @ingredients %>
 <div id="ingredients">
-  <h1 class="font-bold text-4xl">Ingredients Search</h1>
-    <%= form_with url: search_ingredients_path, method: :get, data: { turbo_frame: "ingredients-list" } do |f| %>
-      <%= f.text_field :q,
-        placeholder: "Search ingredients...",
-        class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white focus:border-emerald-500",
-        oninput: "this.form.requestSubmit()"
-      %>
-    <% end %>
+  <%= form_with url: search_ingredients_path, method: :get, data: { turbo_frame: "ingredients-list" } do |f| %>
+    <%= f.text_field :q,
+      placeholder: "Search ingredients...",
+      class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white focus:border-emerald-500",
+      oninput: "this.form.requestSubmit()"
+    %>
+  <% end %>
 
-    <%# Display selected ingredient %>
-    <%= turbo_frame_tag "selected-ingredient" %>
+  <%# Display selected ingredient %>
+  <%= turbo_frame_tag "selected-ingredient" %>
 
-    <%= turbo_frame_tag "ingredients-list" do %>
-      <% if params[:q].present? && @ingredients.present? %>
-        <div class="bg-white shadow rounded">
-          <% @ingredients.each do |ingredient| %>
-            <div class="p-4 border-b last:border-b-0 hover:bg-gray-50 cursor-pointer"
-              data-controller="ingredient"
-              data-action="click->ingredient#select"
-              data-ingredient-id="<%= ingredient.id %>"
-              data-ingredient-name="<%= ingredient.name %>">
-              <%= ingredient.name %>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
+  <%# Renders autofill search results %>
+  <%= turbo_frame_tag "ingredients-list" do %>
+    <% if params[:q].present? %>
+      <%= render "list", ingredients: @ingredients %>
     <% end %>
+  <% end %>
 
   <div class="mt-4 text-center">
-    <%= link_to "Add New Ingredient", new_ingredient_path, class: "bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded" %>
+    <%= link_to "Create New Ingredient", new_ingredient_path, class: "bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded" %>
   </div>
 
 </div>
