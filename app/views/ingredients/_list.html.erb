@@ -1,7 +1,9 @@
 <div class="bg-white shadow rounded">
   <% ingredients.each do |ingredient| %>
-    <div class="p-4 border-b last:border-b-0">
+    <%= link_to ingredient_path(ingredient),
+        class: "block p-4 border-b last:border-b-0 hover:bg-gray-50",
+        data: { turbo_frame: "selected-ingredient" } do %>
       <%= ingredient.name %>
-    </div>
+    <% end %>
   <% end %>
 </div>

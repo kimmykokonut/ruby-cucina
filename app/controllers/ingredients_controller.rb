@@ -3,6 +3,10 @@ class IngredientsController < ApplicationController
     @ingredients = Ingredient.all
   end
 
+  def show
+    @ingredient = Ingredient.find(params[:id])
+  end
+
   def search
     @ingredients = if params[:q].present?
       Ingredient.where("name ILIKE ?", "%#{params[:q]}%").limit(10)
