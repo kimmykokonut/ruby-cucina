@@ -1,6 +1,6 @@
 <%= turbo_frame_tag "selected-ingredient" do %>
     <div class="bg-emerald-100 rounded-lg p-3 mb-4 flex justify-between items-center">
-        <span class="text-emerald-700"><%= @ingredient.name %></span>
+        <span class="text-emerald-700"><%= @ingredient.display_name %></span>
         <%= link_to "x",
         "#",
         method: :get,

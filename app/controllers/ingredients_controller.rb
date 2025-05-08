@@ -1,6 +1,6 @@
 class IngredientsController < ApplicationController
   def index
-    @ingredients = Ingredient.all
+    @ingredients = Ingredient.order(:name)
   end
 
   def show
@@ -9,7 +9,9 @@ class IngredientsController < ApplicationController
 
   def search
     @ingredients = if params[:q].present?
-      Ingredient.where("name ILIKE ?", "%#{params[:q]}%").order(:name).limit(10)
+      Ingredient.where("name ILIKE ?", "%#{params[:q]}%")
+        .order(:name)
+        .limit(10)
     else
       Ingredient.all
     end
