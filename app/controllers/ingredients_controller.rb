@@ -9,7 +9,7 @@ class IngredientsController < ApplicationController
 
   def search
     @ingredients = if params[:q].present?
-      Ingredient.where("name ILIKE ?", "%#{params[:q]}%").limit(10)
+      Ingredient.where("name ILIKE ?", "%#{params[:q]}%").order(:name).limit(10)
     else
       Ingredient.all
     end
