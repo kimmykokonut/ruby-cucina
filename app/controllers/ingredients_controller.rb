@@ -19,4 +19,22 @@ class IngredientsController < ApplicationController
         locals: { ingredients: @ingredients }
       )
   end
+
+  def new
+    @ingredient = Ingredient.new
+  end
+  # don't create if a match exists in DB
+  def create
+    @ingredient = Ingredient.new(ingredient_params)
+    if @ingredient.save
+      redirect_to ingredients_path, notice: "Ingredient '#{@ingredient.name}' was successfully created"
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  private
+    def ingredient_params
+      params.expect(ingredient: [ :name ])
+    end
 end
