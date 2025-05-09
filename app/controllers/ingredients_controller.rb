@@ -29,8 +29,9 @@ class IngredientsController < ApplicationController
   def create
     @ingredient = Ingredient.new(ingredient_params)
     if @ingredient.save
-      redirect_to ingredients_path, notice: "Ingredient '#{@ingredient.name}' was successfully created"
+      redirect_to ingredients_path, notice: "Ingredient '#{@ingredient.display_name}' was successfully created"
     else
+      flash.now[:alert] = "Could not create ingredient: #{@ingredient.errors.full_messages.join(', ')}"
       render :new, status: :unprocessable_entity
     end
   end
