@@ -18,6 +18,8 @@ Ruby Cucina solves the problem of managing and sharing family recipes in the dig
 - Search through ingredients and cooking times
 - Track recipe details with modern features like prep time and photo attachments
 
+![Home page](/app/assets/images/recipes-index.png)
+
 ## Table of Contents
 * <a href="#features">Features</a>
 * <a href="#build-details">Build Details</a>
@@ -33,6 +35,9 @@ Ruby Cucina solves the problem of managing and sharing family recipes in the dig
     * <a href="#stretch-goals">Stretch Goals</a>
 * <a href="#contact-and-support">Contact and Support</a>
 * <a href="#license">License</a>
+
+<img src="./app/assets/images/recipe-create.png" alt="Create new recipe" width="400">
+<img src="./app/assets/images/ingredients-search.png" alt="Ingredient Search: Autofill" width="400">
 
 ## Features
 
