@@ -48,5 +48,22 @@ class RecipesControllerTest < ActionDispatch::IntegrationTest
   end
 
   # PATCH /recipes/1
+  test "should update recipe title" do
+    patch recipe_url(@recipe), params: {
+      recipe: { title: "updated title", prep_time_minutes: 45 }
+    }
+
+    assert_redirected_to recipe_url(@recipe)
+    @recipe.reload
+    assert_equal "updated title", @recipe.title
+    assert_equal 45, @recipe.prep_time_minutes
+  end
+
   # DELETE /recipes/1
+  test "should delete recipe" do
+    assert_difference("Recipe.count", -1) do
+      delete recipe_url(@recipe)
+    end
+    assert_redirected_to recipes_path
+  end
 end
