@@ -1,0 +1,4 @@
+recipe_photo:
+  name: photo
+  record: pasta (Recipe)
+  blob: first_png_blob

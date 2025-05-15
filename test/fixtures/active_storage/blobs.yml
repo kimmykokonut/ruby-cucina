@@ -1,0 +1,1 @@
+first_png_blob: <%= ActiveStorage::FixtureSet.blob filename: "nachos.png", content_type: "image/png" %>
