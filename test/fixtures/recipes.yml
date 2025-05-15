@@ -2,7 +2,13 @@
 
 pasta:
   title: Buttered Noodles
-  instructions: Boil water, cook pasta, add butter
+  description: something simple
+  instructions: '[
+    "Boil water in large pot",
+    "Cook pasta until al dente",
+    "Drain pasta",
+    "Add butter and stir"
+    ]'
   notes: Dad's favorite
   private: false
   user: one
@@ -10,12 +16,16 @@ pasta:
   cook_time_minutes: 10
   yield_amount: 4
   yield_unit: servings
+  has_photo: false
 
 cookies:
   title: Chocolate Chip Cookies
-  instructions: Mix ingredients, bake at 350F
-  notes: Best with milk
-  private: false
+  instructions: '[
+    "Mix ingredients",
+    "Bake at 350F for 18-22 minutes, until golden",
+    "Cool on wire rack."
+    ]'
+  private: true
   user: two
   prep_time_minutes: 15
   cook_time_minutes: 12

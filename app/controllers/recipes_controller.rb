@@ -1,10 +1,10 @@
 class RecipesController < ApplicationController
-  # item list - gets all rec from db
+  # item list GET /recipes
   def index
     @recipes = Recipe.all
   end
 
-  # item details
+  # item details GET /recipes/:id
   def show
     @recipe = Recipe.find(params[:id])
   end
@@ -15,7 +15,7 @@ class RecipesController < ApplicationController
     @results = []
   end
 
-  # create new recipe
+  # create new recipe POST /recipes
   def create
     @recipe = Recipe.new(recipe_params)
     # Remove once auth added
@@ -32,4 +32,7 @@ class RecipesController < ApplicationController
     def recipe_params
       params.expect(recipe: [ :title, :description, :prep_time_minutes, :cook_time_minutes, :yield_amount, :yield_unit, :photo, :notes, :private,  instructions: [], tag_ids: [], ingredient_recipes_attributes: [ :ingredient_id, :amount, :unit ] ])
     end
+
+  # PATCH /recipes/:id
+  # DELETE /recipes/:id
 end
